@@ -1,0 +1,99 @@
+.container {
+  align-items: center; /* Vertically center the contents */
+}
+
+form {
+  font-family: "Futura PT", sans-serif;
+}
+
+.form-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: "Futura PT", sans-serif;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.signup {
+  margin-bottom: 1em;
+}
+
+.initials {
+  margin-bottom: 1em;
+}
+
+.form-field {
+  display: flex;
+  align-items: left;
+  margin-bottom: 15px;
+}
+
+.form-field label {
+  width: 150px;
+  text-align: left;
+  margin-right: 15px;
+}
+
+.form-field input,
+.form-field textarea {
+  flex: 1;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+
+.form-field span {
+  color: black;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.invalid {
+  border: 2px solid red;
+}
+
+
+.checkbox {
+  margin-bottom: 2em;
+}
+
+.contact-person {
+  margin-bottom: 10px;
+  margin-right: 50px;
+}
+
+.add-contact {
+  background-color: black;
+  color: #fff;
+  padding: 5px 10px;
+  margin-top: 0.5em;
+  cursor: pointer;
+}
+
+.remove-contact {
+  background-color: gainsboro;
+  color: black;
+  padding: 5px 10px;
+  margin-top: 0.5em;
+  cursor: pointer;
+}
+
+.submit {
+  background-color: black;
+  color: #fff;
+  padding: 5px 10px;
+  margin-top: 0.5em;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+
+.column {
+  margin-right: 100px;
+}

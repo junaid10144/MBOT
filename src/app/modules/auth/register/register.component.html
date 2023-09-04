@@ -1,0 +1,208 @@
+<form [formGroup]="registerForm" class="container" (ngSubmit)="proceedRegistration()">
+    <div class="form-container">
+        <h4 class="signup">Sign Up</h4>
+        <div class="initials">
+            <div class="form-field">
+                <label for="firstName">First Name<span>*</span></label>
+                <input 
+                  type="text" 
+                  id="firstName" 
+                  name="firstName" 
+                  formControlName="firstName" 
+                  [class.invalid]="registerForm.get('firstName')?.invalid" />
+                <div *ngIf="registerForm.get('firstName')?.hasError('required') && (registerForm.get('username')?.dirty || registerForm.get
+                ('username')?.touched) || isSubmitted" class="error-message">First Name is required</div>
+            </div>
+
+            <div class="form-field">
+                <label for="lastName">Last Name<span>*</span></label>
+                <input type="text" id="lastName" name="lastName" formControlName="lastName" required />
+                <!-- <div *ngIf="isSubmitted && registerForm.get(['lastName'])?.invalid" class="error-message">Last Name is required</div> -->
+                <div *ngIf="registerForm.get('lastName')?.hasError('required') && (registerForm.get('lastName')?.dirty || registerForm.get
+                ('lastName')?.touched) || isSubmitted" class="error-message">Last Name is required</div>
+            </div>
+
+            <div class="form-field">
+                <label for="username">Username<span>*</span></label>
+                <input type="text" id="username" name="username" formControlName="username" required />
+                <!-- <div *ngIf="isSubmitted && !registerForm.get(['username'])?.valid" class="error-message">username is required</div> -->
+                <div *ngIf="registerForm.get('username')?.hasError('required') && (registerForm.get('username')?.dirty || registerForm.get
+                ('username')?.touched) || isSubmitted" class="error-message">Username is required</div>
+            </div>
+            <div class="form-field">
+                <label for="email">Email <span> *</span></label>
+                <input type="email" id="email" name="email" formControlName="email" required />
+                <div *ngIf="registerForm.get(['email'])?.hasError('required') && (registerForm.get('email')?.dirty || registerForm.get
+                ('email')?.touched) || isSubmitted" class="error-message">Email is Required</div>
+                <div *ngIf="registerForm.get(['email'])?.hasError('email') && (registerForm.get('email')?.dirty || registerForm.get
+                ('email')?.touched) || isSubmitted" class="error-message">Invalid Email</div>
+                <!-- <div *ngIf="registerForm.get(['email'])?.invalid && (registerForm.get('email')?.dirty || registerForm.get
+                ('email')?.touched) || isSubmitted" class="error-message">Invalid Email</div> -->
+            </div>
+
+            <div class="form-field">
+                <label for="brandName">Brand Name<span>*</span></label>
+                <input type="text" id="brandName" name="brandName" formControlName="brandName" required />
+                <div *ngIf="registerForm.get(['brandName'])?.invalid && (registerForm.get('brandName')?.dirty || registerForm.get
+                ('brandName')?.touched) || isSubmitted" class="error-message">Brand Name is required</div>
+            </div>
+
+            <div class="form-field">
+                <label for="department">Department<span>*</span></label>
+                <input type="text" id="department" name="department" formControlName="department" required />
+                <div *ngIf="registerForm.get(['department'])?.invalid && (registerForm.get('department')?.dirty || registerForm.get
+                ('department')?.touched) || isSubmitted" class="error-message">Department is required</div>
+            </div>
+
+            <div class="form-field">
+                <label for="mobileNumber">Mobile Number</label>
+                <input type="text" id="mobileNumber" name="mobileNumber" formControlName="mobileNumber" [class.invalid]="registerForm.get('mobileNumber')?.invalid"/>
+                <!-- <div *ngIf="isSubmitted && !registerForm.get(['mobileNumber'])?.valid" class="error-message">Mobile Number is required</div> -->
+                <div *ngIf="registerForm.get(['mobileNumber'])?.hasError('pattern')" class="error-message">Mobile Number is incorrect</div>
+                <div *ngIf="registerForm.get(['mobileNumber'])?.hasError('required') && (registerForm.get('mobileNumber')?.dirty || registerForm.get
+                ('mobileNumber')?.touched) || isSubmitted" class="error-message">Mobile Number is required</div>
+            </div>
+
+            <div class="form-field">
+                <label for="telephoneNumber">Telephone Number<span>*</span></label>
+                <input type="text" id="telephoneNumber" name="telephoneNumber" formControlName="telephoneNumber" required />
+                <div *ngIf="registerForm.get(['telephoneNumber'])?.hasError('pattern')" class="error-message">Telephone Number is incorrect</div>
+                <div *ngIf="registerForm.get(['telephoneNumber'])?.hasError('required') && (registerForm.get('mobileNumber')?.dirty || registerForm.get
+                ('mobileNumber')?.touched) || isSubmitted" class="error-message">Telephone Number is required</div>
+            </div>
+        </div>
+
+        <div class="form-field">
+            <div formGroupName="deliveryAddress" class="column">
+                <h5 class="del">Delivery Address</h5>
+                <div>
+                    <label for="deliveryStreet">Street Address<span>*</span></label>
+                    <input type="text" id="deliveryStreet" name="deliveryStreet" formControlName="street" required />
+                    <div *ngIf="registerForm.get('deliveryAddress.street')?.hasError('required') && (registerForm.get('deliveryAddress.street')?.dirty || registerForm.get
+                    ('deliveryAddress.street')?.touched) || isSubmitted" class="error-message">
+                      Street Address is required</div>
+                </div>
+                <div>
+                    <label for="deliveryHouseNr">House Nr<span>*</span></label>
+                    <input type="text" id="deliveryHouseNr" name="deliveryHouseNr" formControlName="houseNr" required />
+                    <div *ngIf="registerForm.get('deliveryAddress.houseNr')?.hasError('required') && (registerForm.get('deliveryAddress.houseNr')?.dirty || registerForm.get
+                    ('deliveryAddress.houseNr')?.touched) || isSubmitted" class="error-message">House Nr is required</div>
+                </div>
+                <div>
+                    <label for="deliveryPostcode">Postcode<span>*</span></label>
+                    <input type="text" id="deliveryPostcode" name="deliveryPostcode" formControlName="postcode" required />
+                    <div *ngIf="registerForm.get('deliveryAddress.postcode')?.hasError('required') && (registerForm.get('deliveryAddress.postcode')?.dirty || registerForm.get
+                    ('deliveryAddress.postcode')?.touched) || isSubmitted" class="error-message">Postcode is required</div>
+                </div>
+                <div>
+                    <label for="deliveryCity">City<span>*</span></label>
+                    <input type="text" id="deliveryCity" name="deliveryCity" formControlName="city" required />
+                    <div *ngIf="registerForm.get('deliveryAddress.city')?.hasError('required') && (registerForm.get('deliveryAddress.city')?.dirty || registerForm.get
+                    ('deliveryAddress.city')?.touched) || isSubmitted" class="error-message">City is required</div>
+                </div>
+                <div>
+                    <label for="deliveryCountry">Country<span>*</span></label>
+                    <input type="text" id="deliveryCountry" name="deliveryCountry" formControlName="country" required />
+                    <div *ngIf="registerForm.get('deliveryAddress.country')?.hasError('required') && (registerForm.get('deliveryAddress.country')?.dirty || registerForm.get
+                    ('deliveryAddress.country')?.touched) || isSubmitted" class="error-message">Country is required</div>
+                </div>
+            </div>
+
+            <div *ngIf="registerForm.get('billingDifferent')?.value" formGroupName="billingAddress" class="column">
+                <h5>Billing Address</h5>
+                <div>
+                    <label for="billingStreet">Street Address<span>*</span></label>
+                    <input type="text" id="billingStreet" name="billingStreet" formControlName="street" required />
+                    <div *ngIf="registerForm.get('billingAddress.street')?.hasError('required') && (registerForm.get('billingAddress.street')?.dirty || registerForm.get
+                    ('billingAddress.street')?.touched) || isSubmitted" class="error-message">Street Address is required</div>
+                </div>
+                <div>
+                    <label for="billingHouseNr">House Nr<span>*</span></label>
+                    <input type="text" id="billingHouseNr" name="billingHouseNr" formControlName="houseNr" required />
+                    <div *ngIf="registerForm.get('billingAddress.houseNr')?.hasError('required') && (registerForm.get('billingAddress.houseNr')?.dirty || registerForm.get
+                    ('billingAddress.houseNr')?.touched) || isSubmitted" class="error-message">House Nr is required</div>
+                </div>
+                <div>
+                    <label for="billingPostcode">Postcode<span>*</span></label>
+                    <input type="text" id="billingPostcode" name="billingPostcode" formControlName="postcode" required />
+                    <div *ngIf="registerForm.get('billingAddress.postcode')?.hasError('required') && (registerForm.get('billingAddress.postcode')?.dirty || registerForm.get
+                    ('billingAddress.postcode')?.touched) || isSubmitted" class="error-message">Postcode is required</div>
+                </div>
+                <div>
+                    <label for="billingCity">City<span>*</span></label>
+                    <input type="text" id="billingCity" name="billingCity" formControlName="city" required />
+                    <div *ngIf="registerForm.get('billingAddress.city')?.hasError('required') && (registerForm.get('billingAddress.city')?.dirty || registerForm.get
+                    ('billingAddress.city')?.touched) || isSubmitted" class="error-message">City is required</div>
+                </div>
+                <div>
+                    <label for="billingCountry">Country<span>*</span></label>
+                    <input type="text" id="billingCountry" name="billingCountry" formControlName="country" required />
+                    <div *ngIf="registerForm.get('billingAddress.country')?.hasError('required') && (registerForm.get('billingAddress.country')?.dirty || registerForm.get
+                    ('billingAddress.country')?.touched) || isSubmitted" class="error-message">Country is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" id="billingDifferent" name="billingDifferent" formControlName="billingDifferent" />
+            <label for="billingDifferent">Billing address is different from Delivery address</label>
+        </div>
+
+        <h5>Contact Persons </h5>
+        <div formArrayName="contactPersons" class="form-field">
+            <div *ngFor="let contactPerson of contactPersons.controls; let i = index">
+                <div class="contact-person">
+                    <div>
+                        <label for="contactName{{ i }}">Name</label>
+                        <input type="text" name="contactName{{ i }}" id="contactName{{ i }}" formControlName="contactPersons[{{i}}].name" required [disabled]="isSubmitted" />
+                        <div *ngIf="registerForm.get(['contactPersons', i, 'name'])?.invalid" class="error-message">Name is required</div>
+                        <!-- <div *ngIf="isSubmitted && !registerForm.get(['contactPersons', i, 'name'])?.valid" class="error-message">Name
+              is required</div> -->
+                        <!-- <div class="error-message" *ngIf="isSubmitted && i === 0 && !registerForm.get(['contactPersons', i, 'name'])?.valid" >Name is required</div> -->
+                    </div>
+
+                    <div>
+                        <label for="contactTelephone{{ i }}">Telephone</label>
+                        <input type="text" name="contactTelephone{{ i }}" id="contactTelephone{{ i }}" formControlName="contactPersons[{{i}}].telephone" [disabled]="isSubmitted" />
+                        <div *ngIf="registerForm.get(['contactPersons', i, 'telephone'])?.invalid" class="error-message">Invalid Telephone Number</div>
+                    </div>
+
+                    <div>
+                        <label for="contactMobile{{ i }}">Mobile</label>
+                        <input type="text" name="contactMobile{{ i }}" id="contactMobile{{ i }}" formControlName="contactPersons[{{i}}].mobile"
+                              [disabled]="isSubmitted" />
+                              <div *ngIf="registerForm.get(['contactPersons', i, 'mobile'])?.invalid" class="error-message">Invalid Mobile Number</div>
+                       <!-- <div *ngIf="registerForm.get(['contactPersons', i, 'mobile'])?.hasError('required')" class="error-message">Mobile Number is required</div> -->
+                       <!-- <div *ngIf="registerForm.get(['contactPersons', i, 'mobile'])?.hasError('pattern')" class="error-message">Mobile Number is incorrect</div> -->
+                    </div>
+
+                    <div>
+                        <label for="contactEmail{{ i }}">Email</label>
+                        <input type="email" name="contactPersonEmail{{ i }}" id="contactEmail{{ i }}" formControlName="contactPersons[{{ i }}].email"
+                           [disabled]="isSubmitted" />
+                           <!-- <div class="error-message" *ngIf="registerForm.get(['contactPersons', i, 'email'])?.hasError('required'); else invalid">Email is required</div>   -->
+                           <!-- <div class="error-message" *ngIf="registerForm.get(['contactPersons', i, 'email'])?.hasError('email')">Email is incorrect</div>   -->
+                           <!-- <div *ngIf="registerForm.get('firstName')?.hasError('required') && (registerForm.get('username')?.dirty || registerForm.get
+                ('username')?.touched) || isSubmitted" class="error-message">First Name is required</div> -->
+                        <!-- <div class="error-message" *ngIf="isSubmitted && i === 0 && !registerForm.get(['contactPersons', i, 'email'])?.valid" > Invalid email</div>-->
+                        <div class="error-message" *ngIf="registerForm.get(['contactPersons', i, 'email'])?.invalid" > Invalid email</div> 
+                        <!-- <ng-template #invalid>
+                            <div class="error-message" *ngIf="registerForm.get(['contactPersons', i, 'email'])?.invalid" > Invalid email</div>
+                        </ng-template> -->
+                        
+                    </div>
+                </div>    
+
+          <button class="remove-contact" type="button" (click)="removeContactPerson(i)" [disabled]="isSubmitted">-</button>
+        </div>
+        
+        <div *ngIf="contactPersons.length < 5">
+            <button class="add-contact" type="button" (click)="addContactPerson()" [disabled]="isSubmitted">+</button>
+        </div>
+
+        </div>
+
+        <button class="submit" type="submit" [disabled]="!isFormValid() || isSubmitted">Register</button>
+    </div>
+</form>
+
+
